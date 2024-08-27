@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>játék</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: greenyellow;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        #tabla {
+            background-color: limegreen;
+            height: 800px;
+            width: 1295px;
+            border: 2px solid black;
+        }
+        #labda {
+            width: 35px;
+            height: 35px;
+            background-color: green;
+            border-radius: 50%;
+            position: absolute;
+            border: 1px solid black;
+            top: 410px;
+            left: 10px;
+
+        }
+        #editor {
+            width: 1295px;
+            height: 120px;
+            background-color: goldenrod;
+            border: 2px solid black;
+            position: absolute;
+            top: 820px;
+            left: 8px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #start {
+            background-color: gold;
+            border: 1px solid black;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #basic {
+            background-color: gold;
+            border: 1px solid black;
+            position: absolute;
+            top: 5px;
+            left: 96px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #stop {
+            background-color: gold;
+            border: 1px solid black;
+            position: absolute;
+            top: 5px;
+            left: 52px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #sebesseg {
+            width: 45px;
+            background-color: gold;
+            border: 1px solid black;
+            position: absolute;
+            top: 30px;
+            left: 70px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #degrees {
+            width: 45px;
+            background-color: gold;
+            border: 1px solid black;
+            position: absolute;
+            top: 52px;
+            left: 70px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #gravity {
+            width: 45px;
+            background-color: gold;
+            border: 1px solid black;
+            position: absolute;
+            top: 74px;
+            left: 70px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #bounce {
+            width: 45px;
+            background-color: gold;
+            border: 1px solid black;
+            position: absolute;
+            top: 96px;
+            left: 70px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #speedtext {
+            position: absolute;
+            top: 14px;
+            left: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #degreestext {
+            position: absolute;
+            top: 36px;
+            left: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #gravitytext {
+            position: absolute;
+            top: 58px;
+            left: 5px;  
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #bouncetext {
+            position: absolute;
+            top: 80px;
+            left: 5px;  
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #startpos {
+            position: absolute;
+            top: 45px;
+            left: 170px;  
+        }
+        #startpostext {
+            position: absolute;
+            top: -10px;
+            left: 207px;  
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #colortext {
+            position: absolute;
+            top: -10px;
+            left: 1180px;  
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #colorbox {
+            position: absolute;
+            top: 20px;
+            left: 1150px;  
+            height: 100px;
+            width: 100px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .red {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            height: 15px;
+            width: 15px;
+            background-color: red;
+            border: 1px solid black;
+        }
+        .darkorange {
+            position: absolute;
+            top: 24px;
+            left: 5px;
+            height: 15px;
+            width: 15px;
+            background-color: darkorange;
+            border: 1px solid black;
+        }
+        .orange {
+            position: absolute;
+            top: 43px;
+            left: 5px;
+            height: 15px;
+            width: 15px;
+            background-color: orange;
+            border: 1px solid black;
+        }
+        .gold {
+            position: absolute;
+            top: 62px;
+            left: 5px;
+            height: 15px;
+            width: 15px;
+            background-color: gold;
+            border: 1px solid black;
+        }
+        .yellow {
+            position: absolute;
+            top: 81px;
+            left: 5px;
+            height: 15px;
+            width: 15px;
+            background-color: yellow;
+            border: 1px solid black;
+        }
+        .green {
+            position: absolute;
+            top: 5px;
+            left: 25px;
+            height: 15px;
+            width: 15px;
+            background-color: green;
+            border: 1px solid black;
+        }
+        .limegreen {
+            position: absolute;
+            top: 24px;
+            left: 25px;
+            height: 15px;
+            width: 15px;
+            background-color: limegreen;
+            border: 1px solid black;
+        }
+        .lime {
+            position: absolute;
+            top: 43px;
+            left: 25px;
+            height: 15px;
+            width: 15px;
+            background-color: lime;
+            border: 1px solid black;
+        }
+        .turquoise {
+            position: absolute;
+            top: 62px;
+            left: 25px;
+            height: 15px;
+            width: 15px;
+            background-color: turquoise;
+            border: 1px solid black;
+        }
+        .teal {
+            position: absolute;
+            top: 81px;
+            left: 25px;
+            height: 15px;
+            width: 15px;
+            background-color: teal;
+            border: 1px solid black;
+        }
+        .blue {
+            position: absolute;
+            top: 5px;
+            left: 45px;
+            height: 15px;
+            width: 15px;
+            background-color: blue;
+            border: 1px solid black;
+        }
+        .blueviolet {
+            position: absolute;
+            top: 24px;
+            left: 45px;
+            height: 15px;
+            width: 15px;
+            background-color: blueviolet;
+            border: 1px solid black;
+        }
+        .purple {
+            position: absolute;
+            top: 43px;
+            left: 45px;
+            height: 15px;
+            width: 15px;
+            background-color: purple;
+            border: 1px solid black;
+        }
+        .magenta {
+            position: absolute;
+            top: 62px;
+            left: 45px;
+            height: 15px;
+            width: 15px;
+            background-color: magenta;
+            border: 1px solid black;
+        }
+        .pink {
+            position: absolute;
+            top: 81px;
+            left: 45px;
+            height: 15px;
+            width: 15px;
+            background-color: pink;
+            border: 1px solid black;
+        }
+        .black {
+            position: absolute;
+            top: 5px;
+            left: 65px;
+            height: 15px;
+            width: 15px;
+            background-color: black;
+            border: 1px solid black;
+        }
+        .gray {
+            position: absolute;
+            top: 24px;
+            left: 65px;
+            height: 15px;
+            width: 15px;
+            background-color: gray;
+            border: 1px solid black;
+        }
+        .silver {
+            position: absolute;
+            top: 43px;
+            left: 65px;
+            height: 15px;
+            width: 15px;
+            background-color: silver;
+            border: 1px solid black;
+        }
+        .white {
+            position: absolute;
+            top: 62px;
+            left: 65px;
+            height: 15px;
+            width: 15px;
+            background-color: white;
+            border: 1px solid black;
+        }
+        .sienna {
+            position: absolute;
+            top: 81px;
+            left: 65px;
+            height: 15px;
+            width: 15px;
+            background-color: sienna;
+            border: 1px solid black;
+        }
+        .rgb {
+            position: absolute;
+            top: 5px;
+            left: 85px;
+            height: 15px;
+            width: 25px;
+            background-color: black;
+            color: white;
+            font-size: small;
+            border: 1px solid black;
+        }
+        .slow {
+            position: absolute;
+            top: 24px;
+            left: 85px;
+            height: 15px;
+            width: 25px;
+            background-color: white;
+            color: black;
+            font-size: 11.5px;
+            border: 1px solid black;
+        }
+        .fast {
+            position: absolute;
+            top: 43px;
+            left: 85px;
+            height: 15px;
+            width: 25px;
+            background-color: white;
+            color: black;
+            font-size: 12px;
+            border: 1px solid black;
+        }
+        .rgbspeedbox {
+            position: absolute;
+            top: 62px;
+            left: 85px;
+            height: 34px;
+            width: 55px;
+            background-color: black;
+            color: white;
+            font-size: 10.5px;
+            border: 1px solid black;
+        }
+        #rgblevel {
+            position: absolute;
+            top: 5px;
+            left: 14px;
+            color: yellow;
+            font-size: 10.5px;
+        }
+        .switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 21px;
+
+
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: gold;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px gold;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 31px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+    #switch1 {
+        position: absolute;
+        top: -10px;
+        left: -658px;
+    }
+    #switch2 {
+        position: absolute;
+        top: 15px;
+        left: -658px;
+    }
+    #switch1text {
+        position: absolute;
+        top: -27px;
+        left: -775px;
+    }
+    #switch2text {
+        position: absolute;
+        top: 0px;
+        left: -775px;
+    }
+    </style>
+</head>
+<body>
+    <div id="tabla"></div>
+    <div id="editor">
+        <button onclick="start()" id="start">Start</button>
+        <button onclick="basic()" id="basic">Basic</button>
+        <button onclick="stop()" id="stop">Stop</button>
+        <p id="speedtext">Speed: </p>
+        <input type="number" value="30" id="sebesseg">
+        <p id="degreestext">Degrees: </p>
+        <input type="number" value="25" id="degrees">
+        <p id="gravitytext">Gravity: </p>
+        <input type="number" value="10" id="gravity">
+        <p id="bouncetext">Bounce: </p>
+        <input type="number" value="5" id="bounce">
+        <p id="startpostext">Starting<br/> Position:</p>
+        <input type="range" value="50" id="startpos">
+        <p id="colortext">Color: </p>
+        <div id="colorbox">
+            <div class="red" onclick="color('red')"></div>
+            <div class="darkorange" onclick="color('darkorange')"></div>
+            <div class="orange" onclick="color('orange')"></div>
+            <div class="gold" onclick="color('gold')"></div>
+            <div class="yellow" onclick="color('yellow')"></div>
+            <div class="green" onclick="color('green')"></div>
+            <div class="limegreen" onclick="color('limegreen')"></div>
+            <div class="lime" onclick="color('lime')"></div>
+            <div class="turquoise" onclick="color('turquoise')"></div>
+            <div class="teal" onclick="color('teal')"></div>
+            <div class="blue" onclick="color('blue')"></div>
+            <div class="blueviolet" onclick="color('blueviolet')"></div>
+            <div class="purple" onclick="color('purple')"></div>
+            <div class="magenta" onclick="color('magenta')"></div>
+            <div class="pink" onclick="color('pink')"></div>
+            <div class="black" onclick="color('black')"></div>
+            <div class="gray" onclick="color('gray')"></div>
+            <div class="silver" onclick="color('silver')"></div>
+            <div class="white" onclick="color('white')"></div>
+            <div class="sienna" onclick="color('sienna')"></div>
+            <div class="rgb" onclick="rgb()">RGB</div>
+            <div class="slow" onclick="slow()">Slow</div>
+            <div class="fast" onclick="fast()">Fast</div>
+            <div class="rgbspeedbox">RGB Speed:
+                <p id="rgblevel">Lvl 5</p>
+            </div>
+            <p id="switch1text">Infinite Bounce:</p>
+            <div id="switch1" onclick="infinitebounce()">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <p id="switch2text">Infinite Move:</p>
+            <div id="switch2" onclick="infinitemove()">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </div>
+        </div>
+        
+    </div>
+    <div id="labda"></div>
+    <script>
+        var labda = document.getElementById("labda")
+        var sebesseg = Number(document.getElementById("sebesseg").value)
+        var topcounter = Number(document.getElementById("degrees").value)
+        var gravity = Number(document.getElementById("gravity").value) / 10
+        var bounce = Number(document.getElementById("bounce").value) / 10
+        var startpos = (Number(document.getElementById("startpos").value)*765)/100+10
+        var counter = 0
+        var counter2 = 0
+        var counter3 = 0
+        var timer
+        var timer2
+        var timer3
+        let rgblevel = 5
+        let rgbtimer
+        let rgbspeed = 20
+        let switch1 = false
+        let switch2 = false
+        loop2()
+        function loop2() {
+            startpos = (Number(document.getElementById("startpos").value)*765)/100+10
+            labda.style.top = startpos+"px"
+            timer3 = window.requestAnimationFrame(loop2)
+        }
+        function start() {
+            startpos = (Number(document.getElementById("startpos").value)*765)/100+10
+            cancelAnimationFrame(timer3)
+            counter = 0
+            counter2 = 0
+            clearInterval(timer)
+            clearInterval(timer2)
+            labda.style.left = "10px";
+            labda.style.top = startpos+"px"
+            loop()
+            topcounter = Number(document.getElementById("degrees").value)
+            sebesseg = Number(document.getElementById("sebesseg").value)
+            gravity = Number(document.getElementById("gravity").value) / 10
+            bounce = Number(document.getElementById("bounce").value) / 10
+            startpos = Number(document.getElementById("startpos").value)
+             timer = setInterval(function(){labda.style.left = parseInt(labda.style.left) + sebesseg + "px"}, 20)
+             timer2 = setInterval(function(){labda.style.top = parseInt(labda.style.top) - topcounter + "px"; topcounter-=gravity}, 20)
+             function loop() {
+                if(parseInt(labda.style.left) > 1270) {
+                        labda.style.left = 1270+"px"
+                       // sebesseg = Number(document.getElementById("sebesseg").value)
+                        sebesseg = -sebesseg*bounce
+                        if(switch2 == false) {sebesseg *= 0.5}
+                        counter2++
+                    }
+                    if(parseInt(labda.style.left) < 9 && counter2 > 0) {
+                        labda.style.left = 10+"px"
+                        sebesseg = -sebesseg*bounce
+                        if(switch2 == false) {sebesseg *= 0.5}
+                    }
+                if(gravity >= 0) {
+                    if(parseInt(labda.style.top) > 775 && bounce > 0) {
+                        if(switch1 == false) {bounce *= 0.75}
+                        labda.style.top = 775+"px"
+                        topcounter = -topcounter*bounce
+                        if(switch2 == false) {sebesseg *= 0.5}
+                        if(bounce < 0.1) {if(switch1 == false) {bounce = 0}; if(switch2 == false) {sebesseg=0;}} 
+                    }
+                    if(parseInt(labda.style.top) > 775 && bounce <= 0) {
+                        labda.style.top = 775+"px"
+                        if(switch2 == false) {sebesseg *= 0.93}
+                    }
+                    if(parseInt(labda.style.top) < 10 && counter == 0) {
+                        labda.style.top = 10+"px"
+                        topcounter = Number(document.getElementById("degrees").value)
+                        topcounter = -topcounter*(0.5*bounce)
+                        if(switch2 == false) {sebesseg *= 0.5}
+                        if(switch1 == false) {bounce *= 0.75}
+                        counter = 1
+                    }
+                }
+                if(parseInt(labda.style.top) > 40 && counter == 1) {
+                        counter = 0
+                    }
+                if(gravity < 0) {
+                    if(parseInt(labda.style.top) < 10) {
+                        labda.style.top = 10+"px"    
+                        topcounter = -topcounter*bounce  
+                        if(switch2 == false) {sebesseg *= 0.75}
+                        if(switch1 == false) {bounce *= 0.75}
+                        if(bounce < 0.1) {if(switch1 == false) {bounce = 0}; if(switch2 == false) {sebesseg*=0.5}}
+                    }
+                    if(parseInt(labda.style.top) > 775 && counter == 0) {
+                        labda.style.top = 775+"px"
+                        topcounter = Number(document.getElementById("degrees").value)
+                        topcounter = -topcounter*bounce
+                        if(switch2 == false) {sebesseg *= 0.5}
+                        if(switch1 == false) {bounce *= 0.75}
+                        counter = 1
+                    }
+                }
+              window.requestAnimationFrame(loop)
+        }
+        }
+        function basic() {
+            document.getElementById("sebesseg").value = 30
+            document.getElementById("degrees").value = 25
+            document.getElementById("gravity").value = 10
+            document.getElementById("bounce").value = 5
+            document.getElementById("startpos").value = 50
+        }
+        function stop() {
+            clearInterval(timer)
+            clearInterval(timer2)
+            labda.style.left = "10px";
+            labda.style.top = "410px";
+            loop2()
+        }
+        function color(color) {
+            clearInterval(rgbtimer);
+            labda.style.backgroundColor = color
+        }
+        function rgb() {
+    clearTimeout(rgbtimer);
+    let red = 255;
+    let green = 0;
+    let blue = 0;
+    rgbstart()
+
+    function rgbstart() {
+        if (red == 255 && green < 255 && blue == 0) {
+            green++;
+        }
+        else if (green == 255 && red > 0 && blue == 0) {
+            red--;
+        }
+        else if (green == 255 && blue < 255 && red == 0) {
+            blue++;
+        }
+        else if (blue == 255 && green > 0 && red == 0) {
+            green--;
+        }
+        else if (blue == 255 && red < 255 && green == 0) {
+            red++;
+        }
+        else if (red == 255 && blue > 0 && green == 0) {
+            blue--;
+        }
+
+        labda.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        rgbtimer = setTimeout(rgbstart, rgbspeed);
+    }
+    }
+    function slow() {
+        if(rgbspeed < 5) {rgbspeed += 2}
+        else {rgbspeed += 5}
+        if(rgbspeed > 40) {
+            rgbspeed -= 5
+        }
+        if(rgbspeed==40) {rgblevel = 1; document.getElementById("rgblevel").style.color = "green"}
+        else if(rgbspeed==35) {rgblevel = 2; document.getElementById("rgblevel").style.color = "limegreen"}
+        else if(rgbspeed==30) {rgblevel = 3; document.getElementById("rgblevel").style.color = "lime"}
+        else if(rgbspeed==25) {rgblevel = 4; document.getElementById("rgblevel").style.color = "greenyellow"}
+        else if(rgbspeed==20) {rgblevel = 5; document.getElementById("rgblevel").style.color = "yellow"}
+        else if(rgbspeed==15) {rgblevel = 6; document.getElementById("rgblevel").style.color = "gold"}
+        else if(rgbspeed==10) {rgblevel = 7; document.getElementById("rgblevel").style.color = "orange"}
+        else if(rgbspeed==5) {rgblevel = 8; document.getElementById("rgblevel").style.color = "darkorange"}
+        else if(rgbspeed==3) {rgblevel = 9; document.getElementById("rgblevel").style.color = "red"}
+        else if(rgbspeed==1) {rgblevel = 10; document.getElementById("rgblevel").style.color = "darkred"}
+        document.getElementById("rgblevel").innerHTML = "Lvl " + rgblevel
+
+    }
+    function fast() {
+        if(rgbspeed <= 5) {rgbspeed -= 2}
+        else {rgbspeed -= 5}
+        if(rgbspeed < 1) {
+            rgbspeed += 2
+        }
+        if(rgbspeed==40) {rgblevel = 1; document.getElementById("rgblevel").style.color = "green"}
+        else if(rgbspeed==35) {rgblevel = 2; document.getElementById("rgblevel").style.color = "limegreen"}
+        else if(rgbspeed==30) {rgblevel = 3; document.getElementById("rgblevel").style.color = "lime"}
+        else if(rgbspeed==25) {rgblevel = 4; document.getElementById("rgblevel").style.color = "greenyellow"}
+        else if(rgbspeed==20) {rgblevel = 5; document.getElementById("rgblevel").style.color = "yellow"}
+        else if(rgbspeed==15) {rgblevel = 6; document.getElementById("rgblevel").style.color = "gold"}
+        else if(rgbspeed==10) {rgblevel = 7; document.getElementById("rgblevel").style.color = "orange"}
+        else if(rgbspeed==5) {rgblevel = 8; document.getElementById("rgblevel").style.color = "darkorange"}
+        else if(rgbspeed==3) {rgblevel = 9; document.getElementById("rgblevel").style.color = "red"}
+        else if(rgbspeed==1) {rgblevel = 10; document.getElementById("rgblevel").style.color = "darkred"}
+        document.getElementById("rgblevel").innerHTML = "Lvl " + rgblevel
+    }
+    function infinitemove() {
+        counter3++
+        if(counter3 == 2) {
+            if(switch2 == false) {switch2 = true}
+            else if(switch2 == true) {switch2 = false}
+            counter3 = 0
+        }
+    }
+    function infinitebounce() {
+        counter3++
+        if(counter3 == 2) {
+            if(switch1 == false) {switch1 = true}
+            else if(switch1 == true) {switch1 = false}
+            counter3 = 0
+        }
+    }
+    </script>
+</body>
+</html>
